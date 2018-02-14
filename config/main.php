@@ -68,6 +68,8 @@ return [
                 'enablePrettyUrl' => true,
                 'showScriptName' => false,
                 'rules' => [
+                    'post/<slug>' => 'post/view',
+                    'posts/' => 'post/index',
                 ],
             ],
         ],
@@ -78,6 +80,20 @@ return [
                 'userSettings' => [
                     'class' => \Da\User\Module::className(),
                     'administratorPermissionName' => 'admin'
+                ],
+                'modules' => [
+                    'cms' => [
+                        'class' => '\app\modules\cms\Module'
+                    ]
+                ],
+                'menu' => [
+                    'Сontent',
+                    [
+                        'title' => 'Posts',
+                        'url' => ['/admin/cms/posts/index'],
+                        'icon' => 'file-o',
+                        'active' => ['module' => 'cms', 'controller' => 'posts']
+                    ]
                 ]
             ],
         ],
